@@ -1,0 +1,23 @@
+
+<li [ngClass]="{'list-group-item': true,
+                'list-group-item-success': appareilStatus === 'allumé',
+                'list-group-item-danger': appareilStatus === 'éteint'}">
+                
+    <div style = "width:20px; height:20px; background-color:red;"  *ngIf="appareilStatus === 'éteint'"></div>
+    <h4 [ngStyle]="{color: getColor()}" >Appareil : {{ appareilName }} -- Statut : {{ getStatus() }}</h4>
+    
+    <a routerLink="id">Détail</a>
+
+    <button class="btn btn-success" 
+            (click)="onSwitchOn()"
+            [disabled]="appareilStatus === 'allumé' " 
+            >Allumer</button>
+
+        <button class="btn btn-danger" 
+            (click)="onSwitchOff()"
+            [disabled]="appareilStatus === 'éteindre' " 
+            >Eteindre</button>
+    
+    <!--<input type="text" class="form-control" [(ngModel)]="appareilName" >
+    [()] pour dire que c'est un evt et une propriete a la fois-->
+</li>
